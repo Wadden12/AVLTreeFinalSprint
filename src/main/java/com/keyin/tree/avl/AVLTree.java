@@ -1,6 +1,16 @@
 package com.keyin.tree.avl;
 
-public class AVLTree {
+import java.util.ArrayList;
+import java.util.List;
+
+public class AVLTree implements AVLTreeInterface {
+
+    private List<Integer> tree = new ArrayList<>();
+
+
+    public List<Integer> getTree() {
+        return tree;
+    }
 
     // AVL Node Class
     private class AVLNode{
@@ -8,6 +18,7 @@ public class AVLTree {
         private int value;
         private AVLNode leftChild;
         private AVLNode rightChild;
+
 
 
         public AVLNode(int value) {
@@ -26,6 +37,7 @@ public class AVLTree {
 
     public String clearTree(){
         root = null;
+        tree.clear();
         return("The Tree has been cleared");
     }
 
@@ -44,10 +56,10 @@ public class AVLTree {
 
     public void insert(int value){
       root = insert(root, value);
-      System.out.println();
-      System.out.println("Insert Value " + value);
-      System.out.println(root);
-        System.out.println();
+//      System.out.println();
+//      System.out.println("Insert Value " + value);
+//      System.out.println(root);
+//        System.out.println();
     }
 
     private AVLNode insert(AVLNode root, int value){
@@ -141,6 +153,7 @@ public class AVLTree {
         if(head!= null){
             inOrderTraversal(head.leftChild);
             System.out.println(head.value+"");
+            tree.add(head.value);
             inOrderTraversal(head.rightChild);
         }
 
@@ -152,6 +165,7 @@ public class AVLTree {
     private void preOrderTraversal(AVLNode head){
         if(head !=null){
             System.out.println(head.value+"");
+            tree.add(head.value);
             preOrderTraversal(head.leftChild);
             preOrderTraversal(head.rightChild);
         }
@@ -166,7 +180,11 @@ public class AVLTree {
             postOrderTraversal(head.leftChild);
             postOrderTraversal(head.rightChild);
             System.out.println(head.value + "");
+            tree.add(head.value);
+
         }
 
     }
+
+
 }
